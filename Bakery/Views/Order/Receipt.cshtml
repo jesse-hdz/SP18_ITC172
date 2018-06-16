@@ -1,0 +1,49 @@
+﻿@model Bakery.Models.Order
+@{
+    ViewBag.Title = "Receipt";
+}
+
+<h2>Your Receipt</h2>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Discount</th>
+    </tr>
+    @foreach (var item in Model.GetItems())
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.ProductName)</td>
+            <td>@Html.DisplayFor(model => item.Price)</td>
+            <td> @Html.DisplayFor(model => item.Quantity)</td>
+            <td>@Html.DisplayFor(model => item.Discount)</td>
+        </tr>
+
+    }
+</table>
+
+<table class="table">
+    <tr>
+        <td>Subtotal</td>
+        <td>@Html.DisplayFor(model => model.SubTotal)</td>
+    </tr>
+    <tr>
+        <td>Discounts</td>
+        <td>@Html.DisplayFor(model => model.Discount)</td>
+    </tr>
+    <tr>
+        <td>SubTotal After Discount</td>
+        <td>@Html.DisplayFor(model => model.SubTotalAfterDiscount)</td>
+    </tr>
+
+    <tr>
+        <td>Tax</td>
+        <td>@Html.DisplayFor(model => model.Tax)</td>
+    </tr>
+    <tr>
+        <td>Total</td>
+        <td>@Html.DisplayFor(model => model.Total)</td>
+    </tr>
+</table>
